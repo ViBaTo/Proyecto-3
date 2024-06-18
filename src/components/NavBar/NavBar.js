@@ -11,7 +11,7 @@ const NavBar = () => {
       <button class="navbar-button">Crear</button>
     </div>
     <div class="navbar-center">
-      <input type="text" placeholder="Search" class="navbar-search"/>
+      <input type="text" id="search-input" placeholder="Buscar" class="navbar-search"/>
     </div>
     <div class="navbar-right">
       <button class="navbar-icon">🔔</button>
