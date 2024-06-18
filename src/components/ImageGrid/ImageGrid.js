@@ -14,17 +14,24 @@ const ImageGrid = async (query = '') => {
   const data = await response.json()
   const images = query ? data.results : data
 
-  images.forEach((image) => {
-    const imgDiv = document.createElement('div')
-    imgDiv.className = 'image-item'
+  if (images.length === 0) {
+    const message = document.createElement('p')
+    message.className = 'no-results'
+    message.textContent = 'No se encontraron resultados'
+    container.appendChild(message)
+  } else {
+    images.forEach((image) => {
+      const imgDiv = document.createElement('div')
+      imgDiv.className = 'image-item'
 
-    const img = document.createElement('img')
-    img.src = image.urls.small
-    img.alt = image.alt_description || 'Unsplash Image'
+      const img = document.createElement('img')
+      img.src = image.urls.small
+      img.alt = image.alt_description || 'Unsplash Image'
 
-    imgDiv.appendChild(img)
-    container.appendChild(imgDiv)
-  })
+      imgDiv.appendChild(img)
+      container.appendChild(imgDiv)
+    })
+  }
 
   return container
 }
